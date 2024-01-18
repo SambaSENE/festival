@@ -2,30 +2,49 @@
 require_once "./vendor/autoload.php";
 include "./includes/head.php";
 include "./includes/navbar.php";
-$router =  new AltoRouter();
 
 
-$router->map('GET', '/festival/', function () {
-    require_once "./src/Views/home.php";
-});
-$router->map('GET', '/festival/inscription', function () {
-    require_once "./src/Views/inscription.php";
-});
-$router->map('GET', '/festival/login', function () {
-    require_once "./src/Views/login.php";
-});
-$router->map('GET', '/festival/profil', function () {
-    require_once "./src/Views/profil.php";
-});
+//-----------------
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+//-----------------
+$router = new AltoRouter();
+$baseUrl = isset($_SERVER['BASE_URI']) ? $_SERVER['BASE_URI'] : '';
+$router->setBasePath($baseUrl);
+// map homepage
+$router->map(
+    'GET',
+    '/',
+    function () {
+        require "./src/Views/home.php";
+    }
+);
+$router->map(
+    'GET',
+    '/login',
+    function () {
+        require "./src/Views/login.php";
+    }
+);
+$router->map(
+    'GET',
+    '/inscription',
+    function () {
+        require "./src/Views/inscription.php";
+    }
+);
+echo "<pre>";
+var_dump($router);
+echo "</pre>";
 
-$match = $router->match();
-
-// call closure or throw 404 status
-if (is_array($match) && is_callable($match['target'])) {
-    call_user_func_array($match['target'], $match['params']);
-} else {
-    // no route was matched
-    echo ' 404 Not Found';
+$match =$router->match () ;
+var_dump($match);
+if($match){
+    $match['target']();
+}else {
+    echo '404';
 }
+
 
 include "./includes/footer.php";
