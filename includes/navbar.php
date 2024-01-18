@@ -36,8 +36,8 @@ use PSpell\Config;
                 </li>
             </ul>
             <form class="d-flex">
-                <a href="#" class="btn btn-success"> Inscription</a>
-                <button type="button" class="btn btn-success">Success</button>
+                <a href="#" class="btn btn-warring"> Inscription</a>
+                <button type="button" class="btn btn-success">Connexion</button>
             </form>
         </div>
     </div>
