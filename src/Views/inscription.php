@@ -1,3 +1,4 @@
+
 <form method="POST" style="max-width: 20rem;">
     <fieldset>
         <legend>Inscription</legend>
