@@ -34,12 +34,8 @@ $router->map(
         require "./src/Views/inscription.php";
     }
 );
-echo "<pre>";
-var_dump($router);
-echo "</pre>";
-
 $match =$router->match () ;
-var_dump($match);
+
 if($match){
     $match['target']();
 }else {
