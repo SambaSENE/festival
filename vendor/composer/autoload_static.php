@@ -17,7 +17,7 @@ class ComposerStaticInit73e5dd62e9fccda6c3286508d448aaeb
         ),
         'A' => 
         array (
-            'App\\Festival\\' => 13,
+            'App\\' => 4,
         ),
     );
 
@@ -30,7 +30,7 @@ class ComposerStaticInit73e5dd62e9fccda6c3286508d448aaeb
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'App\\Festival\\' => 
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

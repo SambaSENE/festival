@@ -1,39 +1,43 @@
-<?php 
+<?php
 
 namespace App\Models;
 
 use PDO;
+use PDOException;
 
 class Connexion
 {
-    private static $connecion =null;
-    private const DBHOST = 'localhost';
-    private  const DBNAME = "festival";
-    private const DBUSER = 'root';
-    private const DBPASS = '';
+    protected const DBHOST = "localhost";
+    protected const DBUSER = "root";
+    protected const DBPASS = "root";
+    protected const DBNAME = "festival";
+    private static  $connexion = null;
 
-    public function __construct()
+
+    private function __construct()
     {
-        
     }
 
-    /**
-     * Access DATABASE
-     *
-     * @return PDO
-     */
-    public static function getInstance() : PDO
+    public static function getInstance(): PDO
     {
-        $dsn = "mysql:host=" . self::DBHOST . ";dbname=" . self::DBNAME .";charset=utf_8";
-        if(self::$connecion){
-            self::$connecion = new PDO($dsn , self::DBUSER , self::DBPASS ,
-            [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_CASE => PDO::CASE_LOWER,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
-            ]);
-        }
+        if (is_null(self::$connexion)) {
+            $dsn = "mysql:host=" . self::DBHOST . ";dbname=" . self::DBNAME;
 
-        return self::$connecion;
+            try {
+                self::$connexion = new PDO(
+                    $dsn,
+                    self::DBUSER,
+                    self::DBPASS,
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+                    ]
+                );
+            } catch (PDOException $e) {
+                die("Error" . $e->getMessage());
+            }
+
+            return self::$connexion;
+        }
     }
 }

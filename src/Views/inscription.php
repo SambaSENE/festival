@@ -1,4 +1,16 @@
+<?php
 
+use App\Controllers\DepartementController;
+
+$dept = new DepartementController();
+
+echo "<pre>";
+    var_dump();
+echo "</pre>";
+while($obj = $dept->findDept()){
+    echo $obj->id_dept;
+}
+?>
 <form method="POST" style="max-width: 20rem;">
     <fieldset>
         <legend>Inscription</legend>
@@ -30,6 +42,9 @@
             <label for="dept_user" class="form-label mt-4">Departement</label>
             <select class="form-select" name="dept_user" id="dept_user">
                 <option value="">--</option>
+                <?php foreach ($dept->findDept() as $key => $value): ?>
+                    <option value="<?= $key["id_dept"]?>"><?= $value["name_dept"] ?></option>
+                <?php endforeach ?>
             </select>
         </div>
 

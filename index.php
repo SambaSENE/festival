@@ -34,11 +34,11 @@ $router->map(
         require "./src/Views/inscription.php";
     }
 );
-$match =$router->match () ;
+$match = $router->match();
 
-if($match){
+if ($match) {
     $match['target']();
-}else {
+} else {
     echo '404';
 }
 
