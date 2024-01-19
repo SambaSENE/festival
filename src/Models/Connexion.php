@@ -9,7 +9,7 @@ class Connexion
 {
     protected const DBHOST = "localhost";
     protected const DBUSER = "root";
-    protected const DBPASS = "root";
+    protected const DBPASS = "";
     protected const DBNAME = "festival";
     private static  $connexion = null;
 
