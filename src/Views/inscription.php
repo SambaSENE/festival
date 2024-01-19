@@ -4,11 +4,8 @@ use App\Controllers\DepartementController;
 
 $dept = new DepartementController();
 
-echo "<pre>";
-    var_dump();
-echo "</pre>";
-while($obj = $dept->findDept()){
-    echo $obj->id_dept;
+if(isset($_POST) && !empty($_POST['lastname_user'])&& !empty($_POST['firstname_user']) && !empty($_POST['mail_user']) && !empty($_POST['pass_user']) && !empty($_POST['verifpass_user']) && !empty($_POST['age_user'])){
+    
 }
 ?>
 <form method="POST" style="max-width: 20rem;">
