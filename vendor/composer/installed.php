@@ -3,7 +3,7 @@
         'name' => 'app/festival',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3d4da6f8c9f28c5ece00f73f50ba7aa3737ba7b4',
+        'reference' => 'be3684f278fb2d0409e15cd2b5c2286b8ad915b5',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'app/festival' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3d4da6f8c9f28c5ece00f73f50ba7aa3737ba7b4',
+            'reference' => 'be3684f278fb2d0409e15cd2b5c2286b8ad915b5',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
