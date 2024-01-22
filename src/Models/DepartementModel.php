@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Connexion;
+use PDO;
+
 class DepartementModel
 {
     /**
@@ -12,7 +15,7 @@ class DepartementModel
     public static function getDept(): array
     {
         $connexion =  Connexion::getInstance();
-        $request = $connexion->prepare("SELECT id_dept FROM departements");
+        $request = $connexion->prepare("SELECT id_dep ,name_dep FROM departements");
         $request->execute();
         $states = $request->fetchAll();
 

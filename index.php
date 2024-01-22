@@ -1,7 +1,11 @@
 <?php
+
+
+
 require_once "./vendor/autoload.php";
 include "./includes/head.php";
 include "./includes/navbar.php";
+
 
 
 //-----------------
@@ -17,19 +21,25 @@ $router->map(
     'GET',
     '/',
     function () {
+
+
         require "./src/Views/home.php";
     }
 );
+
+$router->map('GET', '/user', function () {
+    require "./src/Views/user.php";
+});
 $router->map(
-    'GET',
-    '/login',
+    'GET|POST',
+    '/user/login[i :id]',
     function () {
         require "./src/Views/login.php";
     }
 );
 $router->map(
-    'GET',
-    '/inscription',
+    'GET|POST',
+    '/user/register',
     function () {
         require "./src/Views/inscription.php";
     }
