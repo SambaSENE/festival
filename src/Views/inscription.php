@@ -1,50 +1,65 @@
 <?php
 
-use App\Controllers\DepartementController;
+use App\Dao\UserDao;
+use App\Models\DepartementModel;
 
-$dept = new DepartementController();
 
-if(isset($_POST) && !empty($_POST['lastname_user'])&& !empty($_POST['firstname_user']) && !empty($_POST['mail_user']) && !empty($_POST['pass_user']) && !empty($_POST['verifpass_user']) && !empty($_POST['age_user'])){
-    
-}
+$dept = new DepartementModel();
+$user = new UserDao();
+var_dump($_POST);
+$user->addUser();
+
+// if (isset($_POST)) {
+//         if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['email'])  && !empty($_POST['pass_user']) && !empty($_POST['verifPass']) && !empty($_POST['age_user'])  && !empty($_POST['dept_user'])) {
+//                 if (password_verify($_POST['verifPass'], $_POST['pass_user'])) {
+//             if(filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL)){
+                
+                    
+                
+//             }
+//         }else {
+//             echo  'error';
+//         }
+//     }
+// }
+
 ?>
-<form method="POST" style="max-width: 20rem;">
-    <fieldset>
-        <legend>Inscription</legend>
-        <div class="form-group">
-            <label for="name" class="form-label mt-4">Lastname :</label>
-            <input type="text" class="form-control" name="lastname_user" id="name" aria-describedby="name" placeholder="Enter your lastname">
-        </div>
-        <div class="form-group">
-            <label for="name" class="form-label mt-4">Firstname :</label>
-            <input type="text" class="form-control" name="firstname_user" id="name" aria-describedby="name" placeholder="Enter your lastname">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-            <input type="email" class="form-control" name="mail_user" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-            <input type="password" class="form-control" name="pass_user" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="verifPassword" class="form-label mt-4">verification password</label>
-            <input type="password" class="form-control" name="verifpass_user" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="age_user" class="form-label mt-4">Age</label>
-            <input type="number" class="form-control" name="age_user" id="age" placeholder="age" min="18" max="99" autocomplete="on">
-        </div>
-        <div class="form-group">
-            <label for="dept_user" class="form-label mt-4">Departement</label>
-            <select class="form-select" name="dept_user" id="dept_user">
-                <option value="">--</option>
-                <?php foreach ($dept->findDept() as $key => $value): ?>
-                    <option value="<?= $key["id_dept"]?>"><?= $value["name_dept"] ?></option>
-                <?php endforeach ?>
-            </select>
-        </div>
+<form class="w-25 p-3" method="POST">
 
-        <button type="submit" class="btn btn-primary">Valider</button>
-    </fieldset>
+    <div class="mb-3">
+        <label for="lastname" class="form-label">Lastname </label>
+        <input type="text" class="form-control" name="lastname" id="lastname">
+    </div>
+    <div class="mb-3">
+        <label for="firstname" class="form-label">Firstname </label>
+        <input type="text" class="form-control" name="firstname" id="fisrtname">
+    </div>
+    <div class="mb-3">
+        <label for="mail_user" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" id="mail_user">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="pass_user" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="verifpass">Verification mot de passe</label>
+        <input type="password" name="verifPass" id="verifpass" class="form-control">
+    </div>
+    
+    <div class="mb-3">
+        <label for="" class="form-label">choisissez un departement</label>
+        <select class="form-select" name="dept_user" aria-label="Default select example">
+            <option selected>---</option>
+            <?php foreach ($dept->getDept() as $key => $value) : ?>
+                <option value="<?= $value->id_dep ?>"><?= $value->name_dep ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="age_user">Age</label>
+        <input type="number" class="form-control" name="age_user" id="age_user">
+
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
 </form>

@@ -20,8 +20,8 @@ class Connexion
 
     public static function getInstance(): PDO
     {
+        $dsn = "mysql:host=" . self::DBHOST . ";dbname=" . self::DBNAME . ";charset=UTF8";
         if (is_null(self::$connexion)) {
-            $dsn = "mysql:host=" . self::DBHOST . ";dbname=" . self::DBNAME;
 
             try {
                 self::$connexion = new PDO(
@@ -37,7 +37,7 @@ class Connexion
                 die("Error" . $e->getMessage());
             }
 
-            return self::$connexion;
         }
+        return self::$connexion;
     }
 }
