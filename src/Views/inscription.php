@@ -6,22 +6,27 @@ use App\Models\DepartementModel;
 
 $dept = new DepartementModel();
 $user = new UserDao();
-var_dump($_POST);
-$user->addUser();
 
-// if (isset($_POST)) {
-//         if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['email'])  && !empty($_POST['pass_user']) && !empty($_POST['verifPass']) && !empty($_POST['age_user'])  && !empty($_POST['dept_user'])) {
-//                 if (password_verify($_POST['verifPass'], $_POST['pass_user'])) {
-//             if(filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL)){
-                
-                    
-                
-//             }
-//         }else {
-//             echo  'error';
-//         }
-//     }
-// }
+
+if (isset($_POST)) {
+    if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['email'])  && !empty($_POST['pass_user']) && !empty($_POST['verifPass']) && !empty($_POST['age_user'])  && !empty($_POST['dept_user'])) {
+        if ($_POST['verifPass'] === $_POST['pass_user']) {
+           if(filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL) !== false ){
+            if(intval($_POST['age_user']) > 18){
+                $user->addUser($_POST['lastname'] , $_POST['firstname'] , $_POST['email'] , $_POST['pass_user'] , intval($_POST['dept_user']) , intval($_POST['age_user']));
+                header('Location: http://localhost/MVC/TP_MVC/festival/user/login');
+            }
+           }else {
+            echo 'Adresse email invalide';
+           }
+        }else {
+            echo  'mot de passe invalide';
+        }
+    }else {
+        echo "tous les champs sont obligatoires";
+    }
+}
+
 
 ?>
 <form class="w-25 p-3" method="POST">

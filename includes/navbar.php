@@ -1,6 +1,6 @@
 <?php
 
-use PSpell\Config;
+
 ?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -36,8 +36,9 @@ use PSpell\Config;
                 </li>
             </ul>
             <form class="d-flex">
-                <a href="#" class="btn btn-warring"> Inscription</a>
-                <button type="button" class="btn btn-success">Connexion</button>
+                
+                <a href="http://localhost/MVC/TP_MVC/festival/user/register" class="btn btn-warring"> Inscription</a>
+                <a href="http://localhost/MVC/TP_MVC/festival/user/login" type="button" class="btn btn-success">Connexion</a>
             </form>
         </div>
     </div>
