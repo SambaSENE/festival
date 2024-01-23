@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 
 require_once "./vendor/autoload.php";
 include "./includes/head.php";
@@ -32,11 +32,14 @@ $router->map('GET', '/user', function () {
 });
 $router->map(
     'GET|POST',
-    '/user/login[i :id]',
+    '/user/login',
     function () {
         require "./src/Views/login.php";
     }
 );
+$router->map('GET' , '/user/profil' , function(){
+    require './src/Views/user.php';
+});
 $router->map(
     'GET|POST',
     '/user/register',
@@ -44,6 +47,9 @@ $router->map(
         require "./src/Views/inscription.php";
     }
 );
+
+
+
 $match = $router->match();
 
 if ($match) {
